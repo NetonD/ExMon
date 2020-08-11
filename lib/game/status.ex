@@ -1,13 +1,23 @@
 defmodule ExMon.Game.Status do
-  alias ExMon.Game
-  def print_round_message() do
+  def print_round_message(%{status: :started} = state) do
     IO.puts("============= GAME's STARTED ============= ")
-
-    Game.info()
-    |>IO.inspect()
+    IO.inspect(state)
     IO.puts("------------------------------------------")
   end
 
+  def print_round_message(%{status: :continue, turn: player} = state) do
+    IO.puts("---- Turn change <!!> now is #{player} ----")
+    IO.inspect(state)
+    IO.puts("------------------------------------------")
+  end
+
+  def print_round_message(%{status: :game_over} = state) do
+    IO.puts("---- Game's ended. This was placar: ----")
+
+    IO.inspect(state)
+
+    IO.puts("------------------------------------------")
+  end
   def print_wrong_move(move) do
     IO.puts("=============== Invalid movement key. [MOVE] #{move}.")
   end

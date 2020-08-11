@@ -10,7 +10,8 @@ defmodule ExMon do
     |>create_player(:soco,:cura,:piui)
     |>Game.start(player)
 
-    Status.print_round_message()
+    Game.info()
+    |>Status.print_round_message()
   end
 
   def make_move(move) do
@@ -26,6 +27,9 @@ defmodule ExMon do
       :move_heal -> "Curando em XPTO"
       move -> Actions.attack(move)
     end
+
+    Game.info()
+    |>Status.print_round_message()
   end
 
 end
