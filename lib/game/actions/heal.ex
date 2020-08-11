@@ -2,7 +2,7 @@ defmodule ExMon.Game.Actions.Heal do
   @heal_range 12..25
 
   alias ExMon.Game
-
+  alias ExMon.Game.Status
   def heal_life(player) do
     player
     |> Game.fetch_player()
@@ -21,12 +21,14 @@ defmodule ExMon.Game.Actions.Heal do
     player
     |>Game.fetch_player()
     |>Map.put(:life, life)
-    |>update_game_state(player)
+    |>update_game_state(player,life)
   end
 
-  def update_game_state(player_state,player) do
+  def update_game_state(player_state,player, life_healed) do
     Game.info()
     |>Map.put(player, player_state)
     |>Game.update()
+
+    Status.print_message_move(player, :heal, life_healed)
   end
 end
