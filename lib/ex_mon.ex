@@ -24,7 +24,7 @@ defmodule ExMon do
 
   def do_move({:ok, move}) do
     case move do
-      :move_heal -> "Curando em XPTO"
+      :move_heal -> Actions.heal()
       move -> Actions.attack(move)
     end
 
