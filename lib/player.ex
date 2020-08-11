@@ -16,9 +16,11 @@ defmodule ExMon.Player do
       iex> ExMon.Player.new("neto","voadora","tapioca","girapomba")
       %ExMon.Player{
         life: 100,
-        move_heal: "tapioca",
-        move_random: "girapomba",
-        move_strong: "voadora",
+        moves: %{
+          move_heal: "tapioca",
+          move_random: "girapomba",
+          move_strong: "voadora",
+        },
         name: "neto"
       }
   """
@@ -28,9 +30,9 @@ defmodule ExMon.Player do
       moves: %{
         move_strong: strong,
         move_heal: heal,
-        move_random: random,
+        move_random: random
       },
-      name: name,
+      name: name
     }
   end
 end

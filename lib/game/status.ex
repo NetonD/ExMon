@@ -1,3 +1,5 @@
+# p = ExMon.create_player("neto",:soco,:cura,:a)
+
 defmodule ExMon.Game.Status do
   def print_round_message(%{status: :started} = state) do
     IO.puts("============= GAME's STARTED ============= ")
@@ -18,6 +20,7 @@ defmodule ExMon.Game.Status do
 
     IO.puts("------------------------------------------")
   end
+
   def print_wrong_move(move) do
     IO.puts("=============== Invalid movement key. [MOVE] #{move}.")
   end
@@ -31,6 +34,8 @@ defmodule ExMon.Game.Status do
   end
 
   def print_message_move(player, :heal, life_healed) do
-    IO.puts("!!============= #{player} heal itself to #{life_healed} life points. =============!!")
+    IO.puts(
+      "!!============= #{player} heal itself to #{life_healed} life points. =============!!"
+    )
   end
 end
