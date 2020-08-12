@@ -25,17 +25,17 @@ defmodule ExMon do
     |> computer_move()
   end
 
-  def handle_status(%{status: :game_over} = info, _move), do: Status.print_round_message(info)
+  defp handle_status(%{status: :game_over} = info, _move), do: Status.print_round_message(info)
 
-  def handle_status(_status, move) do
+  defp handle_status(_status, move) do
     move
     |> Actions.fetch_move()
     |> do_move()
   end
 
-  def do_move({:error, move}), do: Status.print_wrong_move(move)
+  defp do_move({:error, move}), do: Status.print_wrong_move(move)
 
-  def do_move({:ok, move}) do
+  defp do_move({:ok, move}) do
     case move do
       :move_heal -> Actions.heal()
       move -> Actions.attack(move)
